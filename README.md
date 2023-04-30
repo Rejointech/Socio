@@ -1,2 +1,1 @@
-# Socio
-Repository for social media application
+# Socio - Where Connections come to life
