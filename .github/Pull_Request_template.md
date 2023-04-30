@@ -6,7 +6,7 @@
 - [ ] New feature
 - [ ] Enhancement
 - [ ] Refactoring
-  [ ] Migrations
+- [ ] Migrations
 - [ ] Dependency updates
 - [ ] Documentation
 - [ ] CI/CD
