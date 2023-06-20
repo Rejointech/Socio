@@ -1,8 +1,11 @@
 [package]
 name = "router"
-version = "0.1.0"
-edition = "2021"
+version = "0.2.0"
+default-run = "router"
+rust-version.workspace = true
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+common_enums = {path = "../common_enums"}
+common_utils = {path = "../common_utils"}
