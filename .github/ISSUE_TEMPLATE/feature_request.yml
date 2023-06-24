@@ -6,9 +6,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        We value your time and efforts to submit this feature request form. Here are a few things to check before clicking the submit button :)
-        1. Make sure you're on the latest version of the app.
-        2. Please try to fill this template completely to the best of your abilities. A feature request that is clear and explicit in its needs lets us get to work faster.
+        We appreciate the time and effort you have dedicated to submitting this feature request form. Before you proceed with submitting, kindly consider the following recommendations:
+        1. Ensure that you are on the most recent version of the application.
+        2. Please endeavor to complete the provided template to the best of your abilities. A well-defined and precise feature request allows us to expedite our work more efficiently.
 
   - type: textarea
     id: feature-description

@@ -6,9 +6,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        We value your time and effort to submit this bug report. Here are a few things to check before clicking the submit button :)
-        1. Make sure you're on the latest version of the app.
-        2. Please try to fill this template completely to the best of your abilities. A bug report that is clear and has a reproducible example lets us get to work faster.
+        Thank you for taking the time to submit this bug report. Before submitting, please consider the following suggestions:
+        1. Ensure that you are on the most recent version of the application.
+        2. Please fill out the provided template as accurately and comprehensively as possible. Providing a clear bug report with a reproducible example enables us to address the issue more efficiently.
 
   - type: textarea
     id: bug-description
