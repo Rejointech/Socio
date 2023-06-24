@@ -2,7 +2,4 @@
 resolver = "2"
 members = ["crates/*"]
 package.rust-version = "1.65"
-<<<<<<< Updated upstream
-=======
 package.edition = "2021"
->>>>>>> Stashed changes
