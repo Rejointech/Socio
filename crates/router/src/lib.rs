@@ -1,6 +1,6 @@
 mod routes;
 
-use actix_web::{get, web, App, HttpServer, Responder};
+use actix_web::{get, App, HttpServer, Responder};
 
 #[get("/health")]
 async fn greet() -> impl Responder {
