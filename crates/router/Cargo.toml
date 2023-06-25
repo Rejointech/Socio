@@ -2,10 +2,19 @@
 name = "router"
 version = "0.2.0"
 default-run = "router"
+edition.workspace = true
 rust-version.workspace = true
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 common_enums = {path = "../common_enums"}
 common_utils = {path = "../common_utils"}
+
+#Third party crates
+actix-web = "4.3.1"
+
+[dev-dependencies]
+actix-http = "3.3.1"
+
+[[bin]]
+name = "router"
+path = "src/bin/router.rs"
