@@ -4,7 +4,7 @@ use actix_web::{get, App, HttpServer, Responder};
 
 #[get("/health")]
 async fn greet() -> impl Responder {
-    format!("Health is good ! ")
+    "Health is good !".to_string()
 }
 
 pub async fn start_server() -> std::io::Result<()> {
