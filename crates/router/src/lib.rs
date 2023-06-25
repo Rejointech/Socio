@@ -7,7 +7,6 @@ async fn greet() -> impl Responder {
     "Health is good !".to_string()
 }
 
-
 #[actix_web::main]
 pub async fn start_server() -> std::io::Result<()> {
     HttpServer::new(|| App::new().service(greet))
