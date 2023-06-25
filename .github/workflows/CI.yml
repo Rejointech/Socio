@@ -4,13 +4,10 @@ on:
   push:
     branches:
       - main
-<<<<<<< Updated upstream
   
   pull_request:
     branches:
       - main
-=======
->>>>>>> Stashed changes
 
 jobs:
   formatting:
@@ -29,7 +26,6 @@ jobs:
       - name: Check formatting
         shell: bash
         run: cargo +nightly fmt --all --check
-<<<<<<< Updated upstream
 
   check-msrv:
     name: Check compilation on MSRV toolchain
@@ -189,5 +185,4 @@ jobs:
 
       - name: Spell check
         uses: crate-ci/typos@master
-=======
->>>>>>> Stashed changes
+
