@@ -15,8 +15,6 @@ tokio = "1.28.2"
 
 [dev-dependencies]
 actix-http = "3.3.1"
-reqwest = "0.11"
-
 [[bin]]
 name = "router"
 path = "src/bin/router.rs"
