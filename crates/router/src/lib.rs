@@ -1,18 +1,20 @@
-mod routes;
+pub mod configs;
+pub mod core;
+pub mod routes;
 
-use actix_web::{get, App, HttpServer, Responder};
+use actix_web::{dev::Server, get, App, HttpServer, Responder};
+use configs::settings::Settings;
 
 #[get("/health")]
 async fn greet() -> impl Responder {
     "Health is good !".to_string()
 }
 
-#[actix_web::main]
-pub async fn start_server() -> std::io::Result<()> {
-    HttpServer::new(|| App::new().service(greet))
-        .bind(("127.0.0.1", 8080))?
-        .run()
-        .await
+pub async fn start_server(conf: Settings) -> std::io::Result<Server> {
+    let server = HttpServer::new(|| App::new().service(greet))
+        .bind((conf.server.base_url, conf.server.port))?
+        .run();
+    Ok(server)
 }
 
 pub fn sample_func() -> i32 {
