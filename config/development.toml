@@ -1,0 +1,7 @@
+[master_database]
+username = "db_user"
+password = "db_pass"
+host = "localhost"
+port = 5432
+dbname = "socio_db"
+pool_size = 5
