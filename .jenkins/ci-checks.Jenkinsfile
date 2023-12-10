@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'hyperswitch-arch'
+    label 'agent'
   }
 
   environment {
