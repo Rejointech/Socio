@@ -14,6 +14,7 @@ pipeline {
     stage('Checkout VAS Main Branch') {
       steps {
         script {
+          configureGitUsernameAndEmail()
           if(!github_event_head_commit_id)
             env.VAS_COMMIT = getBranchCommit()
           else
@@ -138,6 +139,43 @@ def getBranchCommit() {
     ).trim()
   }
 return readJSON(text: branchResponse).commit.sha
+}
+
+
+def checkoutRepository(String orgName, String repoName, String branchName) {
+  checkout changelog: false,
+    poll: false,
+    scm: scmGit(
+      branches: [[
+        name: "refs/heads/${branchName}"
+      ]],
+      extensions: [
+        submodule(
+          disableSubmodules: false,
+          parentCredentials: true,
+          recursiveSubmodules: true
+        ),
+        localBranch(branchName)
+      ],
+      userRemoteConfigs: [[
+        credentialsId: 'GH_TOKEN',
+        url: "https://github.com/${orgName}/${repoName}.git"
+      ]]
+    )
+}
+
+
+// // Configure git username and email
+def configureGitUsernameAndEmail(){
+  sh '''
+    git config --local user.name 'prajjwalkumar17'
+    git config --local user.email 'write2prajjwal@gmail.com'
+  '''
+}
+
+// Get current timestamp of UTC
+def getCurrentTimestampIso8601() {
+  new Date().format("yyyy-MM-dd'T'HH:mm:ss'Z'", TimeZone.getTimeZone("UTC"))
 }
 
 def setVasSpellCheck(String commitStatus) {
@@ -274,48 +312,6 @@ def setVasStableCheck(String commitStatus) {
     env.CHECK_END_TIME ?: getCurrentTimestampIso8601()
   )
 }
-
-def checkoutRepository(String orgName, String repoName, String branchName) {
-  checkout changelog: false,
-    poll: false,
-    scm: scmGit(
-      branches: [[
-        name: "refs/heads/${branchName}"
-      ]],
-      extensions: [
-        submodule(
-          disableSubmodules: false,
-          parentCredentials: true,
-          recursiveSubmodules: true
-        ),
-        localBranch(branchName)
-      ],
-      userRemoteConfigs: [[
-        credentialsId: 'GH_TOKEN',
-        url: "git@github.com:${orgName}/${repoName}.git"
-      ]]
-    )
-}
-
-// Splits the string on a delimiter defined as: `zero or more whitespace, a literal comma, zero or more whitespace`
-// which will place the words into the list and collapse any whitespace between the words and commas.
-def splitCommaSeparatedStringAndTrim(String s) {
-  new ArrayList<String>(Arrays.asList(s.split("\\s*,\\s*")))
-}
-
-// Configure git username and email
-def configureGitUsernameAndEmail() {
-  sh '''
-    git config --local user.name 'intruder-bot[bot]'
-    git config --local user.email 'intruder-bot[bot]@users.noreply.github.com'
-  '''
-}
-
-// Get current timestamp of UTC
-def getCurrentTimestampIso8601() {
-  new Date().format("yyyy-MM-dd'T'HH:mm:ss'Z'", TimeZone.getTimeZone("UTC"))
-}
-
 // Send Bot update to Github from Jenkins
 def setChecksInProgress (
   String orgName,
