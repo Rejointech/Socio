@@ -291,7 +291,7 @@ def checkoutRepository(String orgName, String repoName, String branchName) {
         localBranch(branchName)
       ],
       userRemoteConfigs: [[
-        credentialsId: 'GH_TOKEN_CHECKOUT',
+        credentialsId: 'GH_TOKEN',
         url: "git@github.com:${orgName}/${repoName}.git"
       ]]
     )
