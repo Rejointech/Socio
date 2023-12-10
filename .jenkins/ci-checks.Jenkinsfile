@@ -291,7 +291,7 @@ def checkoutRepository(String orgName, String repoName, String branchName) {
         localBranch(branchName)
       ],
       userRemoteConfigs: [[
-        credentialsId: 'hyperswitch-cloud-github-deploy-key',
+        credentialsId: 'GH_TOKEN_CHECKOUT',
         url: "git@github.com:${orgName}/${repoName}.git"
       ]]
     )
@@ -306,8 +306,8 @@ def splitCommaSeparatedStringAndTrim(String s) {
 // Configure git username and email
 def configureGitUsernameAndEmail() {
   sh '''
-    git config --local user.name 'hyperswitch-bot[bot]'
-    git config --local user.email '148525504+hyperswitch-bot[bot]@users.noreply.github.com'
+    git config --local user.name 'intruder-bot[bot]'
+    git config --local user.email 'intruder-bot[bot]@users.noreply.github.com'
   '''
 }
 
@@ -329,9 +329,9 @@ def setChecksInProgress (
   String outputText,
   String checkStartTime
 ) {
-  withCredentials(
-    [usernamePassword(credentialsId: 'hyperswitch-bot-github-app', passwordVariable: 'GH_TOKEN', usernameVariable: 'GITHUB_APP_ID')]
-  ) {
+    withCredentials(
+      [usernamePassword(credentialsId: 'intruder-bot', passwordVariable: 'GH_TOKEN', usernameVariable: '425218')]
+    ) {
     sh """
       echo '{
         "name": "${checkName}",
@@ -374,9 +374,9 @@ def setPrCheckCompleted (
   String checkEndTime
 ) {
   // Conclusion can be one of: `action_required`, `cancelled`, `failure`, `neutral`, `success`, `skipped`, `stale`, `timed_out`
-  withCredentials(
-    [usernamePassword(credentialsId: 'hyperswitch-bot-github-app', passwordVariable: 'GH_TOKEN', usernameVariable: 'GITHUB_APP_ID')]
-  ) {
+    withCredentials(
+      [usernamePassword(credentialsId: 'intruder-bot', passwordVariable: 'GH_TOKEN', usernameVariable: '425218')]
+    ) {
     sh """
       echo '{
         "name": "${checkName}",
